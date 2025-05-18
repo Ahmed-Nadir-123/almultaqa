@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Touch to Play Logo Animation</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #111; /* Change background color as needed */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    #logoVideo {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 16px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+      display: none; /* Hidden until touch */
+      background: #000;
+    }
+    #touchPrompt {
+      color: #fff;
+      font-size: 2em;
+      font-family: sans-serif;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="touchPrompt">Touch the screen to play the logo animation</div>
+  <video id="logoVideo" src="IMG_4621-vmake (1).MOV" preload="auto"></video>
+  <script>
+    const video = document.getElementById('logoVideo');
+    const prompt = document.getElementById('touchPrompt');
+
+    function playLogo() {
+      prompt.style.display = 'none';
+      video.style.display = 'block';
+      video.play();
+    }
+
+    // For both touch and mouse (for testing on desktop)
+    prompt.addEventListener('touchstart', playLogo);
+    prompt.addEventListener('click', playLogo);
+
+    // Video will stay visible after it ends
+    video.addEventListener('ended', () => {
+      // The video will remain displayed and paused on the last frame
+    });
+  </script>
+</body>
+</html>
